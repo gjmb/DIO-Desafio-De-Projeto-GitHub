@@ -1,0 +1,199 @@
+- COMANDOS BÁSICOS PARA O TERMINAL
+
+	ls - linux - lista diretorios
+		-a mostra arquivos ocultos
+	dir - wind - 
+	
+	cd - Entrar e sair de diretorios
+		/ - leva para a base dos diretorios
+		.. - volta um nivel
+		
+	clear crtl + l - linux - limpa o terminal
+	cls - wind - 
+	
+	mkdir - cria um diretorio
+	
+	echo helo > hello.txt joga o que foi retornado pelo echo em um arquivo txt
+	
+	del - wind - deleta o conteudo de um diretorio
+	rmdir /S /Q - wind - deleta o diretorio
+	rm -rf (flag) - linux - deleta o diretorio
+	mv nome do arquivo ./ diretorio de destino
+	
+- TOPICOS FUNDAMENTAIS
+
+	SHA1 - Secure Hash Algorithm
+		- Gera um conjunto de 40 caracteres unico
+		- usado para identificar o estado de um arquivo de forma curta
+		
+- BLOBS, TREES E COMMITS
+
+	BLOBS - armazena arquivos e metadados
+	
+	SHA1 40 crtrs
+	Blob		tamanho 42
+	\0
+	'conteudo'
+	
+	TREE - armazena as Blobs
+	
+	SHA1 40 crtrs
+	Tree            <tamanho>
+	\0 
+	blob sa4d8s texto.txt
+	
+	COMMIT
+	
+	SHA1 40 crtrs
+	Commit            <tamanho>
+	
+	tree sa4d8s 
+	parente asfa57
+	autor gjmb
+	mensagem "inicia..."
+	timestamp
+
+- CHAVE SSH E TOKENS
+
+	https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent
+	
+- COMANDOS DO GIT
+
+	- git init
+		Inicializa um repositorio git no diretorio
+	
+	- git add
+		adiciona um arquivo ao repositorio git
+	
+	
+	- git commit
+		gera um commit
+		-m adiciona uma mensagem
+		
+		
+	- git status
+		mostra o estado dos arquivos no repositorio
+		
+	- git remote add origin
+		aponta o repositorio local para o remoto
+		
+	
+	- git remote -v
+		mostra os repositorios remotos cadastrados
+		
+	- git push origin master
+		envia o repositorio local para o remoto
+		
+	- git pull origin master
+		recebe os arquivos do repositorio remoto no local
+		
+	- git checkout 
+		usado para mover o ponteiro head entre as branches, carrega alteracoes nao comitadas
+		-b <nome> cria uma nova branch
+		
+	- git merge <nome>
+		une duas branchs, juntando alteracoes 
+		
+	-git branch
+		mostra todas as branchs locais
+		-m <novo nome> muda o nome da branch (quando se esta na branch)
+		-m <nome antgo> <novo nome> (quando se esta em outra branch)
+		-d <nome> deleta uma branch
+	
+	-git stash save ""
+		adiciona alteracoes da area de stage para uma area em caso de necessidade
+		- list mostra o que esta salvo na stash
+	 	- pop devolve os arquivos armazenados na stash para a area de stage
+	 	- clear limpa a stash
+		
+		
+	-git log
+		-mostra o historico de alteracoes
+		<nome da pasta> 
+			mostra as alteracoes dentro da pasta
+		--oneline 
+			mostra de forma resumida
+		--graph 
+			mostra de forma mais ilustrativa
+		
+	-git reset <hash de um commit>
+			<HEAD~numero de commits>
+			--soft
+				 forma inversa do add, devolve para a area de staging
+			--mixed 
+				default, devolve p/ unstaged
+			--hard --force --f
+			
+	-git revert <hash de um commit>
+			<HEAD~numero de commits>
+			gera um commit inverso ao apontado
+	
+	
+							
+
+- CICLO DE VIDA DOS ARQS NO GIT
+
+
+	-untracked 
+	-tracked
+		-unmodified  -modified -staged
+		
+	-Servidor
+		- Repositorio remoto
+		
+	-Ambiente de desenvolvimento 
+		- Diretorio de trabalho 
+		- Area de staging
+		- repositorio local
+		
+- RESOLVENDO CONFLITOS
+
+- BRANCHES
+
+	HEAD
+		Ponteiro que aponta para o ultimo commit em uma Branch
+
+- REVERTER COMMITS
+	
+- ESTRUTURAÇAO DE COMMITS
+
+	-Commits atômicos
+		Commits precisam ter começo, meio e fim. (Concisos)
+		
+	-Estrutura
+		Assunto
+			Curto 
+			50 caracteres
+			Começar com letra maiúscula
+			não terminar em ponto
+			escrito de forma imperativa
+		Corpo
+			Adicione detalhes ao commit
+			Quebar a linha em 75 caracteres
+			Indentifique a sua audiência
+			Explique tudo
+			Use markdown
+		Rodapé
+			Referencie assuntos relacionados
+			
+		https://docs.github.com/en/get-started/getting-started-with-git/associating-text-editors-with-git
+	
+- COMMITS SEMÂNTICOS
+	
+	- Versionamento semântico
+	
+		3. 2. 7
+		M  M  P
+		A  I  A
+		J  N  T
+		O  O  C
+		R  R  H
+	
+	https://www.conventionalcommits.org/pt-br/v1.0.0/
+		
+	<tipo> [escopo opicional] : <descricao>
+	[corpo opicional]
+	[rodape(s) opicional(is)]
+	
+	
+	
