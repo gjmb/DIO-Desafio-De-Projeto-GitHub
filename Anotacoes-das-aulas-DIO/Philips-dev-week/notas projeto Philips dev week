@@ -1,0 +1,242 @@
+PROJETO PHILIPS FULLSTACK DEV WEEK
+
+	 Projeto criado durante a Philips fullstack dev week. O objetivo do projeto é construir um sistema que permitirá acesso a dados de exames de mamografia feitos por brasileiras em território nacional. 
+
+	Objetivo
+	
+	Construir um sistema que permitirá acesso aos dados, persistidos no Mysql, via API web.
+		Dados: Exames de mamografia feitos por brasileiras em território nacional
+	
+	Conceitos
+		
+	-Banco de dados relacional
+	-Ambientes de desenvolvimento: Intellij e VS Code
+	-Framework Java
+		-Springboot - construção do backend
+	-Framework JS
+		-Angular - construção da API web
+	- Integração back/frontend
+	
+AULA 1 - Configurando o Projeto, Instalando Dependências e Populando o Banco de Dados
+
+	-Base de dados - DATASUS
+	
+		http://w3.datasus.gov.br/siscam/index.php?area=0402
+		
+	-Def de banco de dados relacional
+	
+		Objetivo - Persistência dos dados
+			 - Estruturação de dados
+			 - Retrato fiel da realidade
+		
+		SGBD - Acesso controlado, regras para correturde
+		
+		Teoria de conjuntos
+			
+			Dados, regras e operações
+		
+		Representação e Tabelas (entidades) com linhas(Instâncias) e colunas (atributos)
+		
+		Benefícios de BDs Relacionais
+		
+			-Simplicidade na consulta
+			-Vasta utilização
+			-Dados estruturados 
+			-Consistência dos dados	
+			 
+	-Instalando o Mysql
+	
+		sudo apt-get install mysql-server
+	
+		sudo apt-get install mysql-client
+	
+		Segurança do Mysql
+		
+			sudo mysql_secure_installation
+		
+		Verificando o funcionamento do Mysql
+		
+			sudo systemctl status mysql
+			
+		Entrar no servidor
+		
+			sudo Mysql	
+	
+	-Instalando/falando sobre IDEs
+	
+		Intellij IDE e VS Code
+		
+		Projeto: Java e Spring Boot
+		
+		start.spring.io
+	
+	-Angular - Desenvolvimento do front-end
+	
+		-NodeJS
+		
+		sudo snap install node --classic
+		
+		-AngularCLI
+		
+		sudo npm install -g @angular/cli
+		
+		-VS Code
+	
+AULA 2 - CONSTRUÇÃO DO BACKEND COM SPRINGBOOT
+
+	-Framework Springboot
+	
+		-Modular
+			Relacionado ao projeto
+			
+		-Desenvolvimento com foco em web API
+			Tomcat embarcado
+			
+		-Pilares
+			Actuator (Confg. da aplicação)
+			AutoConfigurator 
+			Sprig Boot Starter (Agrupamento de dependências - pom.xml)
+			
+		-Suporta 
+			-Microserviços
+			-Reactive
+			-Nuvem
+			-Apps Web
+			-Serveless
+			-Dirigido a eventos
+			-Batch
+			
+	- Configurando o banco de dados
+	
+	CREATE USER 'java'@'localhost' IDENTIFIED BY '@Password';
+	GRANT ALL PRIVILEGES ON *.* TO 'java'@'localhost';
+	
+	CREATE DATABASE dbcancerdemama;
+	SHOW DATABASES;
+	USE dbcancerdemama;
+
+	CREATE TABLE regiao (id INT auto_increment PRIMARY KEY, regiao varchar(20), total_exames int );
+	CREATE TABLE faixa_etaria (id INT auto_increment PRIMARY KEY, Faixa_i int, Faixa_n int, Descricao varchar (50));
+	CREATE TABLE incidencia_exame (id INT auto_increment PRIMARY KEY, Regiao_id int, Mes int, Faixa_id int, Qnt_exames int);
+
+	Alter table incidencia_exame add constraint fk_incidencia_exame foreign key (Regiao_id) references regiao (id);
+	Alter table incidencia_exame add constraint fk_faixa_etaria foreign key (Faixa_id) references faixa_etaria (id);
+	
+	- Polpulando o banco de dados 
+			
+		INSERT INTO regiao (regiao,total_exames) VALUES ('Norte','44');
+		INSERT INTO regiao (regiao,total_exames) VALUES ('Nordeste','13832');
+		INSERT INTO regiao (regiao,total_exames) VALUES ('Sudeste','89657');
+		INSERT INTO regiao (regiao,total_exames) VALUES ('Sul','122');
+		INSERT INTO regiao (regiao,total_exames) VALUES ('Centro-Oeste','2581');
+
+
+		INSERT INTO faixa_etaria (Faixa_i,Faixa_n,Descricao) VALUES ('0','10','Até 10 anos');
+		INSERT INTO faixa_etaria (Faixa_i,Faixa_n,Descricao) VALUES ('11','14','Entre 11 e 14 anos');
+		INSERT INTO faixa_etaria (Faixa_i,Faixa_n,Descricao) VALUES ('15','19','Entre 15 e 19 anos');
+		INSERT INTO faixa_etaria (Faixa_i,Faixa_n,Descricao) VALUES ('20','24','Entre 20 e 24 anos');
+		INSERT INTO faixa_etaria (Faixa_i,Faixa_n,Descricao) VALUES ('25','29','Entre 25 e 29 anos');
+		INSERT INTO faixa_etaria (Faixa_i,Faixa_n,Descricao) VALUES ('30','34','Entre 30 e 34 anos');
+		INSERT INTO faixa_etaria (Faixa_i,Faixa_n,Descricao) VALUES ('35','39','Entre 35 e 39 anos');
+		INSERT INTO faixa_etaria (Faixa_i,Faixa_n,Descricao) VALUES ('40','44','Entre 40 e 44 anos');
+		INSERT INTO faixa_etaria (Faixa_i,Faixa_n,Descricao) VALUES ('45','49','Entre 45 e 49 anos');
+		INSERT INTO faixa_etaria (Faixa_i,Faixa_n,Descricao) VALUES ('50','54','Entre 50 e 54 anos');
+		INSERT INTO faixa_etaria (Faixa_i,Faixa_n,Descricao) VALUES ('55','59','Entre 55 e 59 anos');
+		INSERT INTO faixa_etaria (Faixa_i,Faixa_n,Descricao) VALUES ('60','64','Entre 60 e 64 anos');
+		INSERT INTO faixa_etaria (Faixa_i,Faixa_n,Descricao) VALUES ('65','69','Entre 65 e 69 anos');
+		INSERT INTO faixa_etaria (Faixa_i,Faixa_n,Descricao) VALUES ('70','150','Acima de 70');
+
+
+		INSERT INTO incidencia_exame (regiao_id, Mes, faixa_id, qnt_exames) VALUES (1,5,2,1);
+		INSERT INTO incidencia_exame (regiao_id, Mes, faixa_id, qnt_exames) VALUES (1,5,4,2);
+		INSERT INTO incidencia_exame (regiao_id, Mes, faixa_id, qnt_exames) VALUES ();
+		INSERT INTO incidencia_exame (regiao_id, Mes, faixa_id, qnt_exames) VALUES ();
+
+	
+	
+	-Adicionando no pom.xml a dependencia para que o spring possa ler xml
+	
+	https://mvnrepository.com/artifact/javax.xml.bind/jaxb-api/2.3.0
+
+	<!-- https://mvnrepository.com/artifact/javax.xml.bind/jaxb-api -->
+	<dependency>
+    		<groupId>javax.xml.bind</groupId>
+   		 <artifactId>jaxb-api</artifactId>
+  		  <version>2.3.0</version>
+	</dependency>
+
+ AULA 3 - CRIACAO DO FRONTEND COM ANGULAR  
+ 
+ 	https://material.angular.io/components/categories
+ 
+ 	- Sistema de componetização (componentes isoladas e independentes)
+ 	
+ 		- Maior controle
+
+
+	-ng new <nome do projeto>
+		cria novo projeto angular pelo CLI
+		
+		-Dentro da pasta do projeto
+			-npm install
+				instalação das dependências do projeto
+	-ng serve
+		inicializa a aplicação
+		
+	-Módulo encapsula vários componentes, componentes são classes do Angular que tem um decorator (equiv. anotações do java)
+	como componente
+
+	
+	-ng g m incidencias --routing
+	
+		gera um novo modulo
+	
+	-ng g c /incidencias/incidencias
+	
+		gera um novo componente 
+		
+	angular.io	
+		https://angular.io/guide/lazy-loading-ngmodules
+		
+	-ng g interface /incidencias/model/regiao
+		
+		adiciona uma interface, similar as classes criadas no backend para as entidades do db
+		
+	-ng g service /incidencias/service/regiao
+	
+		cria o serviço para Regiao
+	
+	
+AULA 4 - INTEGRAÇÃO FRONTEND-BACKEND E TESTES
+
+	- Utilizar httpClient em service do modulo, para realizar requisições 
+	
+		import { HttpClient } from '@angular/common/http';
+		
+		dentro do constructor 
+		
+		private http:HttpClient
+		
+		listRegioes () : Observable<Regiao[]>{
+    			const url ='/assets/regioes.json';
+  		  return this.http.get<Regiao[]>(url);
+  		}
+  		
+  		em componentes
+  		
+  		ngOnInit(): void {
+   		 this.regiaoService.listRegioes().subscribe(regioes =>{this.regioes = regioes});
+  		}
+		
+	- Testes de integração
+	
+		
+	
+	
+	
+	
+
+
+
+	
+	
