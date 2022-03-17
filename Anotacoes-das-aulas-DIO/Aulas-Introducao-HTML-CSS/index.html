@@ -3,14 +3,17 @@
     <head>
         <meta charset="utf-8">
         <title>Gabriel Barbosa</title>
+        <! –– Informa ao navegador o tipo de arquivo que está sendo add e o caminho ––>
+        <link rel="stylesheet" href="style.css">
+
     </head>
     <body>
         <! –– Cabeçalho da página ––>
        <header> 
         <! –– Título do conteúdo ––>
-            <img src="13091904.jpeg" alt="Foto do rosto de Gabriel">
+            <img src="13091904.jpeg" alt="Foto do rosto de Gabriel" class="photo">
 
-           <h1>Gabriel Barbosa</h1>    
+           <h1 id="title">Gabriel Barbosa</h1>    
        </header>
 
        <! –– Lista de Posts ––>
@@ -18,20 +21,20 @@
             <! –– Cabeçalho lista da Posts ––>
             <header>
                 <! –– Título da section ––>
-                <h2>Posts</h2>
+                <h2 class="subtitle">Posts</h2>
             </header>
 
             <! ––  article referente ao primeiro Post ––>
-            <article>
+            <article class="post">
                 <! –– Cabeçalho do primeiro Post  ––>
                 <header>
                     <! –– Título do primeiro Post  ––>
-                    <h3>I-Juca Pirama, de Gonçalves Dias</h3>
-                    <img src="Screenshot from 2022-03-16 16-47-52.png" alt="Ilustração do poema">
+                    <h3 class="post_title">I-Juca Pirama, de Gonçalves Dias</h3>
+                    <img src="Screenshot from 2022-03-16 16-47-52.png" alt="Ilustração do poema" class="post_img">
                 </header>
 
                 <! –– Adiciona conteúdos ao primeiro Post  ––>
-                <p>
+                <p class="post_content">
                     IV <br>
                     <br>          
                     Meu canto de morte, <br> 
@@ -79,9 +82,9 @@
        <! –– Lista de contatos  ––>
        <footer>
            <head>
-               <h4>Lista de contatos</h4>
+               <h4 class="foot_title">Lista de contatos</h4>
            </head>
-            <ul>
+            <ul class="contact_list">
                 
                <li>
                 <a href="mailto:gjmbarbosa@gmil.com"> gjmbarbosa@gmil.com</a>

@@ -1,0 +1,300 @@
+HTML
+
+	- Elemento HTML
+	
+		Base do HTML
+	
+	
+		<h1 class = "titulo"> Título </h1>
+	
+		<h1>                      </h1>
+		Abrindo a tag 	   	   fechando a tag	
+	
+		<h1 class = "titulo">
+		    Atributo 
+	    
+		Título
+			Conteúdo
+		
+	- Estrutura básica de um documento
+	
+		<!DOCTYPE html> Não é um elemento, apenas inforama ao navegador a que se refere o documento
+		<html> todo o contúdo do documento está dentro desse elemento
+		 <head> Metadados que o navegador e buscadores necessitam 
+		  <meta> Metadados como encoding dos caracteres
+		   <title></title> coloca titulo na aba do navegador
+		 </head>
+		 <body> Conteúdo da página
+		 </body>
+		</html>
+
+	- Semântica
+	
+		<section> sessão genérica de conteúdo quando não houver um elemento mais específico para isso. ex. lista de artigos
+		<header> É o cabeçalho da página ou de uma seção da página e normalmente contém logotipos, menus, campos de busca.
+		<article> Representa um conteúdo independente e de maior relevância dentro de uma página, como um post de blog, 
+			uma notícia em uma barra lateral ou um bloco de comentários. Um article pode conter outros elementos, 
+			como header, cabeçalhos, parágrafos e imagens.
+		<aside> conteúdo relacionado ao conteúdo principal da página, biografia de um autor, assuntos relacionado, 
+			geralmente uma barra lateral
+		<footer> Esse elemento representa o rodapé do conteúdo ou de parte dele, pois ele é aceito dentro de vários elementos,
+			 como article e section e até do body. Exemplos de conteúdo de um <footer> são informações de autor e links 
+			 relacionados.
+		<h1>-<h6> São utilizados para marcar a importância dos títulos, sendo <h1> o mais importante e <h6> o menos. 
+			   Uma dica: use apenas um <h1> por página, pois ele representa o objetivo da sua página.
+		
+	- Textos e links em HTML
+	
+		<p> </p> conteúdo do artigo, representa um paragráfo. Não suporta apenas texto. Suporta img, código, vídeos e vários
+			 outros tipos de conteúdos
+		
+		<a> Link </a>  Ancôra que interliga vários documentos na web
+		
+		<a href= "github.com/gjmb" > GitHub </a> 
+		
+		href - hiperlink para onde a ancôra está apontando, pode apontar para email e telefne
+		
+		href="mailto:gjmbarbosa@gmail.com"
+		href="tel:20793505"
+		
+		<a target="_blank"> Link </a>
+		
+		target - Diz a forma como o link vai ser aberto, "_blank" abrir em uma nova aba
+		
+	- Tag img
+		
+	<img>
+	
+	src = "img/avatar.jpg"
+	
+	alt= "Foto de bla" 
+	
+	mostra a descrição da foto quando ela não é carregada
+	
+	- Tags li, ul e ol
+	
+	<ul> ordem dos itens não é importante
+	Item 1
+	Item 2
+	
+	<ol> Odem é importante
+	1. Item 1
+	2. Item 3
+	
+	<li> item da lista
+		
+CSS
+
+	Após a criação do HTML a necessidade de formatar as páginas ficou evidente, assim, em 1996, foi criada a linguagem de estilo que 		conhecemos por CSS.
+
+	A sintaxe é bem simples e pode ser explicada com a frase "você cria regras de estilo para elementos ou grupos de elementos".
+	
+	
+	Regra CSS
+	
+		[Seletores]
+		a, p, h1, h3 {
+		[propriedade: valor]
+		color: blue;
+		font-size: 14px;
+		[Declarações]
+		}
+		
+	ID x Classe
+	
+		No exemplo anterior criamos uma regra que altera um elemento HTML diretamente, mas isso significa que todos os elementos 			<a> ficarão com aquela aparência, e normalmente temos sites mais complexos que precisam de várias regras diferentes para 			elementos iguais.
+
+		Para ficar mais tangível vamos relembrar um pouco o site que começamos a fazer no módulo passado, ele tinha vários 		elementos header, mas não vamos querer que o header principal tenha a mesma formatação que o header de uma postagem, é aí 			que entram os IDs e Classes.
+		
+		html
+		
+		<header id ="header" class="geader"></header>
+		
+		<header class="header"></header>
+		
+		css
+		
+			classe
+			 .header {		
+				padding: 10px;
+			}
+			
+			id - só pode ser usado uma vez na página
+			#header {	
+				padding: 10px;
+			}
+			
+			
+	-Box-model
+
+		Quando estamos criando o layout de um site o navegador representa cada elemento HTML  como uma caixa retangular, isso é o 			box-model. E com CSS nós alteramos a aparência dessa caixa (largura, altura, cor de fundo, etc.). Essa caixa é composta 			por 4 áreas: o conteúdo, o padding, a borda e a margem.
+
+		    As margens (margin) são espaçamentos entre elementos;
+		    As bordas (border) circulam o padding e o conteúdo possivel alerar largura e cor;
+		    O padding é um espaçamento entre as bordas e o conteúdo, a diferença para as margens é que declarações de imagem de 				fundo funcionam nele;
+		    O conteúdo (content) é o que o seu bloco representa, um texto, uma imagem, um vídeo;
+
+	-Estilizando elementos, textos e listas
+	
+		Padding e Margin			
+				
+		.post {
+			/* adiciona tamanho para parte superior e inferior (eixo y = 10px) e esquerda e direita (eixo x = 5px)*/
+			padding: 10px 5px;
+		}		
+		
+		.post {
+			/* um valor para cada lado*/
+				 topo  direita inferior   esquerda
+			padding: 15px  10px    5px        0;
+		}
+		
+		.post {
+			padding-top: 15px;
+			padding-right: 10px;
+			padding-bottom: 5px;
+			padding-left: 0;
+		}
+		
+		Background
+		
+		.post {
+			background-color: green;
+			background-image: url ("bg.png");
+			background-position:top;
+		}
+		
+		cor
+		
+		.post {
+			background-color: green;
+			background-color: #008800;
+			background: #008800;
+		}
+		
+		
+		Border
+		
+		Largura, estilo e cor
+		
+		.post {
+			border: 3px solid blue;
+			border-top: ;
+			border-right: 10px;
+			border-bottom: 5px;
+			border-left: 0;
+			
+			border-width: 3px;
+			border-style: solid;
+			border-color: blue;
+			
+			border-top-width: 3px;
+			border-top-color: blue;
+			border-top-style: solid;
+			
+			border-radius: 10px;
+			border-radius: 50%; -> transforma quadrodo em circulo
+			border-radius: 10% 20%;
+			border-radius: 10% 20% 15% 22%;
+			
+		}
+		
+		
+	-Estilizando textos
+			
+		font-family
+		
+			#title {
+				font-family: Verdana;
+			}
+			
+			.post_title {
+				Se a primeira fonte não entrarm, tenta-se a segunda 
+				font-family: Verdana, Arial;
+			}
+			
+		font-size
+		
+		#title {
+				font-size: 30px;
+			}
+			
+		font-style
+		
+		#title {
+				font-style: italic;
+			} 
+		
+		font-weight
+		
+		#title {
+				font-weight: bold;
+			}
+		
+		text-transform
+		
+		text-transform: uppercase;
+		text-transform: lowercase;
+		text-transform: capitalize; (coloca as 1's letras das palavras em M)
+		
+		
+		text-decoration
+		
+		text-decoration: underline;
+		text-decoration: overline;
+		text-decoration: line-through;
+		
+	-Estilizando listas
+		
+		list-style-type
+		
+		ul/ol {
+			ol marcador quadrado
+			list-style-type: square; 
+			ul algarismo romano
+			list-style-type: upper-roman;
+			ol muda o marcador p/ m simbolo
+			list-style-type:"\1F44D";
+			
+			list-style-image: url ("rocket.png");		
+		}
+		
+		
+	-Propriedades de dimensões e alinhamento
+	
+	Width
+	Height
+	
+	Max-width
+	Max-height
+	
+	Margin
+	Text align
+		
+		
+		
+		
+		
+		
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+			
