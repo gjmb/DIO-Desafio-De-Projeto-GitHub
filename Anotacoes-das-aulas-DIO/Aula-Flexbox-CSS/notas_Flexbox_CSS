@@ -21,12 +21,42 @@ Flexbox
 		Propriedades relacionadas:
 		
 		-display - inicializador do container
-		-flex-direction - direcionamento em linha ou coluna
-		-flex-wrap - quebra de linha
-		-flex-flow - abreviação pro direction e wrap?
-		-justify-content - alinhar os itens do conteiner de acordo com a direção
-		-align-items - alinhamento segundo o eixo do container
+		-flex-direction - direcionamento do eixo container, horizontal ou vertical
+			row, row-reverse
+			column, column-reverse
+			
+		-flex-wrap - quebra de linha. Por padrão não há quebra, flex itens ficam compactados além do limite do conteúdo.
+			wrap, wrap-reverse
+		
+		-flex-flow - abreviação pro flex-direction e flex-wrap
+		
+		-justify-content - alinhar os itens do conteiner de acordo com a direção e tratar da distribuição de 
+					espaçamento entre eles. Nota: Se os itens ocuparem 100% de todo o container, não se aplica.
+					flex-start: inicio do container
+					flex-end: final do container
+					center: ao centro do container
+					space-between: cria um espaçamento igual entre os elementos
+					space-around: os espaçamentos do meio são duas vezes maiores que o inicial e final.
+					
+		-align-items - alinhamento segundo o eixo do container, é diferente quando os itens estão em colunas ou em linhas.
+				Permite o alinhamento central no eixo vertical.
+				center: ao centro
+				stretch: padrão, os itens crescem igualmente
+				flex-start: ao inico
+				flex-end: ao final
+				baseline: De acordo com a linha base da tipografia dos itens
+				
 		-align-content - alinhamento das linhar do container
+			Precisamos que:
+				-O container utilize quebra de linha (wrap)
+				-A altura do container seja maior que a soma das linhas dos itens
+			center: ao centro
+				stretch: padrão, os itens crescem igualmente
+				flex-start: ao inico
+				flex-end: ao final
+				space-between: cria um espaçamento igual entre os elementos
+				space-around: os espaçamentos do meio são duas vezes maiores que o inicial e final.
+
 		
 	-Flex Item
 	
@@ -34,13 +64,25 @@ Flexbox
 		
 		Propriedades relacionadas:
 		
-		-flex-grow - fator de crescimento
-		-flex-basis - tanho inicial antes da distribuição dos espaçõ restante dentro do container
-		-flex-shrink - fator de encolhimento
+		-flex-grow - fator de crescimento, respeitando o tamanho de seus conteúdos internos
+				nota: justify-content não funcina se flex-grow for diferente de 0
+		-flex-basis - tanho inicial antes da distribuição dos espaço restante dentro do container
+				auto: será proporcional ao conteúdo do item
+				px, %, cm,... valores definidos
+				0 terá relação com a definição do flex-grow
+				
+		-flex-shrink - fator de encolhimento	
 		-flex - abreviação para as propriedades grow, basis  e shrink
-		-order - ordem de distr e listagem
-		-align-self - alinhamento de um item especifico
 		
+		-order - ordem de distr e listagem
+		
+		-align-self - alinhamento de um item especifico
+				auto: padrão, repeita a def. de align-items do container
+				flex-star
+				flex-end
+				center
+				stretch 
+				baseline: linha de base da tipografia
 		
 			
 	
