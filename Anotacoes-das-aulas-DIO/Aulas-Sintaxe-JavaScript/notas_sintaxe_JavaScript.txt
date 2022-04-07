@@ -1,0 +1,764 @@
+JavaScript
+
+
+	-Aula 1
+
+		Def.
+			Linguagem de programação de alto nível usada no desenv. de aplicativos e páginas web, juntamente
+			com as linguagens HTML e CSS.
+			
+		Boas práticas
+		
+			externar script
+	    		carregar o script ao final do body
+	    		
+    	-Aula 2	
+    	
+    	
+    		Tipagem
+    			Regra de uso de dados
+    			Tipagem do JavaScript é fraca, declaração de dados é dinâmica
+    			
+    			var=1;
+    			
+    		Declaração de variáveis
+	    		
+	    		Tipos primitivos: Boolean, Emppty (0), null, undefined, Number, String.
+	    		
+	    		Tipos não primitivos: Array, Object, Function.
+	    		
+	    		var - escopo global e local, pode ter seu valor alterado, se não for inicializa -> null 
+	    			Pode ser redeclrado e reatribuido
+	    		
+	    		let - escopo local de bloco, pode ter seu valor alterado, se não for inicializa -> null
+	    			Pode ser reatribuido
+	    		
+	    		const - escopo local de bloco, somente leitura, precisa ser inicializada
+	    		
+	    		Hoisting - Atribuir um valor a uma variavel antes de declarar ela (var)
+	    		
+	    		
+	    		
+	    	Escopo
+	    		Define a limitação e visibilidade de um bloco de código
+	    		
+	    		Escopo global - visibilidade em todo o código
+	    		
+	    		Escopo local - visibilidade pode ficar disponível ou não 
+	    		
+	    		
+	    		
+	    	Boas Práticas
+	    	
+	    		Declarar variáveis no topo do bloco de código
+	    		
+	    	Comparação idêntica 
+	    	
+	    		=== - compara o valor e o tipo
+	    		
+	    	Potênciação
+	    	
+	    		**
+	
+	-Aula 3 
+	
+		Manipulando vetores
+		
+			forEach() itera
+			push() add no final			
+		    	pop() remove no final
+		    	shift() remove item no inicio
+		    	unshift() add no inicio
+		    	indexOf() retorna o indice
+		    	splice() remove ou substitui um item pelo indice
+		    	slice() retorna uma parte de um vetor
+	    	
+	    	
+	    	Objetos
+	    	
+	    		Dados que possuem proriedades e valores que definem a suas características. Declarado entre chaves
+	    		
+	    		var xicara = {
+	    			cor: 'azul',
+	    			tamanho: 'p',
+	    			funcao: tomarCafe()
+	    		}
+	    		
+	    		Manipulação: Desestruturação
+	    		
+	    			Usa-se variáveis para receber as propriedades do objeto
+	    			
+	    			var cor = xicara.cor;
+	    			var tamanho = xicara.tamanho;
+	    			var funcao =tomarCafe();
+	    			
+	    		
+	    		
+	-Aula 5 e 6
+	
+	
+		Funções
+		
+			São blocos de comandos e instruções para a execução de determinada tarefa
+			
+			Funções declarativas
+				nome obrigatório
+			  
+				function f (){
+					${instrução};
+				}
+				
+				f();
+				
+			Função por expressão	
+				nome é opcional
+				
+				var func = function f (){
+					${instrução};
+				}
+			
+				var func = function (){
+					${instrução};
+				}
+				
+				func();
+				
+		 	Funções Arrow
+		 		De expressão por sintaxe curta. Sempre anônimas.
+		 		
+		 	 	var func = () => {
+					${instrução};
+				}
+				
+				
+	-Aula 7
+		Criando uma calculadora
+			
+			Number() - converte valores em números
+			Prompt() - registra entrada de usuários
+			Alert() - mostra msg ao usuario
+			Template Strings - usar strings junto com expressões
+				
+	-Aula Operadores
+	
+		Operadores
+		
+			Atribuição
+			=, +=, *=, /=, %=
+				
+			Comparacao 
+			
+			=== mesmo valor e mesmo tipo
+			!== valor e tipos diferentes
+			    
+	-Aula 8
+		
+		Módulos
+		
+		
+			Def.
+				São arquivos .js que em a capacidade de expotar e importar infos. de outros 
+				arquivos do mesmo tipo.
+				
+				ex:
+				
+				import {file}
+				from "./file.js"
+				
+			Exportar
+			
+				Vantagens:	    
+				
+				- Org. do código;
+				- Compartilhamento de variáveis em escopos diferentes;
+				- Explicita as dependências dos arquivos.
+				
+			
+				Named exports
+			
+					export function f (){}
+					
+					function f () {}
+					
+					export {
+						f
+					}		
+					
+				Default exports
+				
+					- Um por arquivo;
+					- É o retorno padrão do arquivo.
+				
+					function f () {}
+					function g () {}
+					function h () {}	  
+					
+					export {
+						f,
+						g
+					}  
+				    
+					export default h;
+			
+			Importar
+			
+				Named exports
+				
+					import {f, var, class} from './file.js'
+				
+				Default exports
+				
+					import valorDefault from './file.js'
+					
+				Trocar nome de imports
+				
+					import {file as Alias} from './file.js';
+					
+					Alias.f();
+					
+				Importar todos os dados de um arquivo
+				
+					import * as Infos from './file.js';
+					
+					Infos.f();
+					
+					console.log();
+					
+			Vinculando ao HTML
+			
+				<script type = "module" src ="./main.js"></script>
+			
+			
+			Curiosidades
+			
+			-Sempre estão em "strict mode";
+			-Podem ser .js e mjs;
+			
+		
+	-Aula 9
+	
+		Funções, o retorno
+		
+			Def. comum
+			
+				function nome (parametros){
+					//instruções
+				}
+				
+				
+				function nome (parametros){
+					//instruções
+					return; // valor de retorno, para a execução da função
+				}
+				
+			Função anônima
+			
+				Funções que representam expressões. Uma variável pode armazenar uma função.
+				
+				const soma = function (a, b) {
+					return a+b;
+				}
+				
+			Funções autoinvocável(IIFE)
+			
+				(
+					function(){
+						return;
+					}
+				)();
+				
+				
+				(
+					function(a, b){
+						return a + b;
+					}
+				)(1,2);
+				
+				const soma = (
+					function(a, b){
+						return a + b;
+					}
+				)(1,2);
+				
+			
+			Callbacks 
+			
+				Uma função passada como argumento para outra, Maior controle da ordem de chamada.
+				
+				const calc = function (op, n1, n2){
+					return op(n1,n2);
+				}
+				
+				const soma = function (a, b) {
+					return a+b;
+				}
+				
+				const calcSoma=calc(soma, 1, 2);
+				
+			Parâmetros
+			
+				Valores padrão
+				
+					function(vetor, num=1){
+					}
+					
+				Objeto arguments
+				
+					Um vetor com todos os parâmetros passados quando a função foi invocada
+						
+					function findMax(){
+						int max = -Infinity;
+						for(let i=0;i< arguments.length; i++ )
+							
+						return max;			
+					}			
+					
+					findMax(9, 0, 1, 3, 4, 69);
+				
+				Arrays
+				
+					Spread: o que era parte de um array se torna um elemento independente 
+					
+						function sum (x, y, z){
+							return x + y + z;
+						}
+						
+						const numb =[1,2,3];
+						
+						console.log(sum(...numb));
+						
+					Rest:  o que era um elemento independente se torna parte de um array
+					
+					
+						function confereTamanho (... args){
+							console.log(args.length);
+						
+						}
+						
+						confereTamanho();
+						confereTamanho(1,2);
+						confereTamanho(1,2,3);
+						
+				Objetos
+				
+					Object Destructuring
+						
+					entre chaves {}, podemos filtrar apenas os dados que nos interessam
+					
+					const user ={
+						...
+						id:'',
+						firstName:'',
+						lastName:'',
+						...
+					}
+					
+					function userId({id}){
+					}
+					
+					function getFullName({fullName: {firstName:first, lastName: last}}){
+					}
+					
+			Laços
+			
+				for in
+				
+					Loop entre propriedades enumeraveis de um objeto
+					
+					for (prop in obj){
+						console.log(prop);//nome dos tipos de dados
+						console.log(obj[prop]); //conteudo
+					}
+					
+				for of
+				
+					Loop etre estruturas iteraveis (arrays e strings)
+					
+					for(letra of palavra){
+						console.log(letra);
+					}
+					
+					
+				do while
+					independente da condição, roda uma vez pelo menos
+				
+			This
+				
+				Em uma function de um objeto (metodo) => Proprio obj dono do método
+				Sozinha => Objeto global (em navegadores, window(objeto pai de tudo que tem no navegador))
+				Função => Objeto global
+				Evento => Elemento que revebeu o evento
+				
+				
+				
+			Call	
+			
+				const ob1 = {
+					nome:
+				}
+				
+				const ob2 = {
+					nome:
+				}
+				
+				function f (){
+					console.log(this.nome);
+				}
+				
+				f.call(ob1);
+				
+				
+				É possível passar parâmetros para função com parâmetros usando vírgulas
+				
+				
+				const ob = {
+					n1:1,
+					n2:2
+				
+				};
+				
+				function f(a, b){
+					console.log(this.n1 + this.n2 +a+b)
+				}
+				
+				f.call(ob,1,5);
+					
+			 	
+			Apply
+			
+			
+				const ob1 = {
+					nome:
+				}
+				
+				const ob2 = {
+					nome:
+				}
+				
+				function f (){
+					console.log(this.nome);
+				}
+				
+				f.apply(ob1);
+					
+				É possível passar os parâmetros dentro de um vetor
+					
+				const ob = {
+					n1:1,
+					n2:2
+				
+				};
+				
+				function f(a, b){
+					console.log(this.n1 + this.n2 +a+b)
+				}
+				
+				f.apply(ob,[1,5]);
+				
+			Bind
+			
+				Clona a estrutura da função onde é chamada e aplica o valor do obj passado
+							
+					
+				const n = function (){
+					return this.nome;
+				}
+				
+				let name = n.bind({nome:'Name'});
+				
+				name();
+				
+			Arrow functions
+					
+				const f = function(){
+					return 'Sup';
+				}
+				
+				const f = () => {
+					return 'Sup';
+				}
+				
+				
+				
+				//apenas se a funcao tiver uma linha pode dispensar {} e return
+				const f = () => 'Sup';
+				
+				//se apenas um parametro, pode dispensar os parenteses
+				const c = a => a;
+				
+				NÃO faz hoisting!
+				
+				this será sempre o objeto global. Call e Apply não funcionam
+				
+				Não exite o objeto 'arguments';
+				
+				O construtur new obj() não pode ser utilizado
+				
+	-Aula 10 
+		
+		Coleções
+		
+			Map
+			
+				Coleção de vetores no formato [chave, valor]
+				
+				Pode ser iterado por um for of
+				
+				const myMap = new Map();
+				
+			Métodos
+			
+				Adicionar, ler e deletar
+				
+				myMap.set('key','value');
+				
+				myMap.get('key');
+				
+				myMap.delete('key');
+				
+				
+			Map vs Objeto 
+			
+				-Maps podem ter chaves de qualquer tipo;
+				-Maps possuem a propriedade length;
+				-Maps são mais fáceis de iterar;
+				-Utilizado quando o valor das chaves é desconhecido;
+				-Os valores tem o mesmo tipo.
+				
+			Set
+			
+				Estruturas que armazenam apenas valores únicos
+				
+				const mySet = new Set();
+				
+			Métodos
+			
+				Adicionar, ler e deletar
+			
+				mySet.add();
+				mySet.has();
+				mySet.delete();
+				
+			Set vs Array
+			
+				-Em vez da prop. length, consulta-se o número de registro pela propriedade size()/
+				-Não possui os métodos map, filter, reduce etc.		
+					
+	-Aula 11
+	
+		Tipos de erro
+		
+			ECMAScript Error
+			
+				Erros que ocorrem em tempo de execução. Composto: Msg, nome, linha e Call Stack
+				
+			DOMException
+			
+				Erros relacionados ao Document Object Model (DOM).
+				
+		Tratando erros
+		
+			throw
+			
+				retorna um erro
+				
+			try...catch
+			
+				enta executar o codigo, se encontrar erro o trata
+				
+			Finaly
+			
+				Executa mesmo se um erro não ocorrer 
+				
+		O objeto Error
+		
+			new Error (message, fileName, lineNumber)
+			
+			//parametros sao opcionais
+			
+			const MeuErro = new Error('Mensagem Inválida');
+			
+			throw MeuErro;
+			
+	-Aula 12
+	
+	
+		Orientação a Objetos
+		
+			Paradigmas e Pilares
+		
+			Os programas são 'objetos', que possuem uma série de propriedades
+			
+			Abstração:
+				
+				Processo mental que consiste em isolar um aspecto determinado de um
+				estado de coisas relativamente complexo, a fim de simplificar a sua avaliação,
+				classificação ou para permitir a comunicação do mesmo.
+			
+			Herança:
+			
+				O objeto filho herda propriedades e métodos do objeto pai.
+				
+			Encapsulamento:
+			
+				Cada classe tem propriedades e métodos independentes do restante do código.
+				
+			Polimorfismo:
+			
+				Objetos podem herdar a mesma classe pai, mas se comportarem de forma dif. quando
+				invocamos seus métodos.
+				
+		OOJS
+		
+			Protótipos
+			
+				Todo os objetos em JS herdam propriedades e métodos de um prototype. O objeto Object.prototype 
+				está no topo desta cadeia.
+				
+			Classes
+			
+				Syntatic sugar: sintaxe feita para facilitar a escrita
+				
+				JS não possui classes nativamente. Todas as classes são objetos e a herança se dá por protótipos.
+				
+			
+	-Aula 13
+	
+		JS Assíncrono
+		
+			Assíncrono: Que não ocorre ou não se efetiva ao mesmo tempo.
+			
+			Por padrão, o JS roda de maneira síncrona.
+			
+			síncrono				Assíncrono
+			
+			Cliente	Servidor		Cliente	Servidor	
+	
+			Requisição =>				Requisição => 
+			
+			Espera		Processamento		Continua 
+								trabalhando	Processamento
+								
+			 	   <=   Reposta			    <=  Resposta
+			Pega					Pega a resp.	
+			a resposta				e faz algo
+			e faz algo   
+		
+		
+		Promises
+		
+			Objeto de processamento assíncrono. Inicialmente, seu valor é desconhecido. Ela pode, então,
+			ser resolvida ou rejeitada.
+			
+
+		    				Resolvida
+		    		=========> 	.then()	======>
+		      Pendente                                           Pendente
+		      ---------                                          ---------
+		      |Promise|                			   |Promise|
+		      ---------          	Rejeitada                 ---------
+				=========>	.catch()	======>
+		
+		
+			3 estados:
+			-Pendente
+			-Realizado
+			-Rejeitado
+			
+			Estrutura
+			
+				const myPromise = new Promise ((resolve, reject) => {
+					window.setTimeout(() => {
+						resolve(console.log('Resolvida!'));
+					}, 2000);
+				});
+				
+				
+				await myPromise
+					.then((result) => result + ' passando pelo then')
+					.then((result) => result + ' e afora acabou!')
+					.catch((err) => console.log(err.message))
+					
+				//Apos 2 segundos, retornará o valor
+				//'Resolvida! passando pelo then e agora acabou!'
+			
+				
+		Async/await
+		
+			Funções assíncronas precisam dessas duas palavras chaves.
+			
+				async function resolvePromise(){
+					const myPromise = new Promise ((resolve, reject) => {
+						window.setTimeout(() => {
+							resolve(console.log('Resolvida!'));
+						}, 3000);
+					});
+					
+					let resolved;
+					try {
+						resolved = await myPromise
+							.then((result) => result + ' passando pelo then')
+							.then((result) => result + ' e afora acabou!')
+							
+					} catch((err) 
+					 resolved = console.log(err.message))
+						
+					//Apos 3 segundos, retornará o valor
+					//'Resolvida! passando pelo then e agora acabou!'
+				
+					return resolved;
+				}
+				
+			
+			Funções assíncronas também retornam Promisses!
+			
+				resolvePromise()
+				>Promise{<pending>}
+				
+				await resolvePromise()
+				'Resolvida! passando pelo then e agora acabou!'
+				
+		APIs e Fetch
+		
+			API
+			
+				Uma API é uma forma de intermediar os resultados do back-end com o que é 
+				apresentado no front-end. É acessada por meio de URLs.
+				
+				É muito comum que APIs retornem seus dados no formato .json, potanto é
+				necessário tratar esses dados quando os recebemos.
+				
+				
+			fetch()
+			
+				A API fetch provê ao navegador uma interface para a execução de requisições HTTP 
+				através de Promises.
+			
+				fetch(url, {options})
+					.then(response => response.json())
+					.then(json => console.log(json))
+					
+				//retorna uma promise, precisa de await
+				
+				fetch(url, {
+   					 method?: "GET" | "POST" | "PUT" | "DELETE",
+   					 cache?:"no-cache",
+   					 mode?: "navigate" | "same-origin" | "no-cors" | "cors",
+ 					 headers?: { [ key: string ]: any }
+  					}): Promise<Response>
+			
+			
+					
+			
+		
+			
+				
+				
+				
+				
+				
+				
+					
+					
+					
+				
