@@ -1,0 +1,129 @@
+Introdução ao TypeScript
+
+	Aula 1 - Vantagens
+	
+		Extensão do JS que adicina checagem de tipos e outras funcionalidades que permitem escrever menos código
+		
+	Aula 2 - bundle parcel
+	
+		npm init
+		
+		npm i parcel-bundler
+		
+	Aula 3 - Função soma com TypeScript
+	
+		Permite a definição do tipo do parâmetro
+		
+			function soma(a: number, b: number){
+ 			   return a + b;
+			} 
+		
+	Aula 4 - Interfaces
+		
+		Usadas definir contratos de estruturas de dados, classes etc 
+	
+		interface Ianimal{
+		    nome:string;
+		    tipo:'terrestre'|'aquatico';
+		    falar(alturaDb:number):void
+		}
+
+		interface Ifelinos extends Ianimal{
+		    classificacao:'grande'|'pequeno'
+		}
+		
+	Aula 5 - Types
+	
+		usado para juntar diferentes interfaces ou que uma variavel pode ser uma ou outra interface
+		
+		
+		type Idomestico = Ifelino | Icanino;
+		
+	Aula 6 - tag input
+	
+		index.html
+		
+			<input id="input" type="text" placeholder="Digite os dados"/>
+			
+		script.ts
+		
+			const input = document.getElementById('input') as HTMLInputElement;
+
+			input.addEventListener('input', (event) => {
+			    const i = event.currentTarget as HTMLInputElement;
+			    console.log(i.value);
+			});
+			
+	Aula 7 - Tipos Genéricos
+	
+		function addApendiceLista<T>(vetor:any[], valor:T){
+		    return vetor.map(item => item + valor);
+		}
+		
+	Aula 8 - Condicionais a partir de parâmetros
+	
+		interface IUser {
+		    id:string;
+		    email:string;
+		}
+
+		interface IAdmin extends IUser {
+		    cargo: 'gerente'|'coordenador'|'surpevisor';
+		}
+				
+		function redirecione(usuario: IUser | IAdmin){
+		    if('cargo' in usuario){
+			//redirecionar para area de adm
+		    }
+		}
+		
+	Aula 9 - utilizando ? para variáveis opcionais
+	
+		cargo?: 'gerente'|'coordenador'|'surpevisor'|'funcionario';
+		
+	Aula 10 - variaveis com propriedades readonly e private
+	
+		interface Cachorro {
+		    readnome:string;
+		    idade:number;
+		    raca?:string;
+		}
+
+		type CachorroReadOnly = {
+		//+ adicionando readyonly e removendo -? opcionais
+		    +readonly [K in keyof Cachorro]-?: Cachorro [K];
+		}
+		
+	
+	Aula 11 - Importando bibliotecas
+	
+		import $ from 'jquery';
+
+
+		$.fn.extend({
+		    novaFuncao(){
+			console.log('Yep');
+		    }
+		});
+
+
+		$('nobdy').novaFuncao();
+		
+
+		export const n = 2;
+
+		/* em outro arquivo
+
+		    import (numero) from './index.ts'
+
+		*/
+	
+	AUla 12 - Omit
+	
+		
+		
+		
+	
+		
+	
+			
