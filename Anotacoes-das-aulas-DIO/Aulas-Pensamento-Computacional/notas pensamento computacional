@@ -194,13 +194,125 @@ Pensamento computacional
 	
 	Como resolver o problema utilizando o pensamento computacional?
 	
+	-Lógica
+
+	    Def. Problema: É uma questão que foge a uma determinada regra e que impede de atingir
+	      um objetivo com eficiência e eficácia.
+
+	    Def. lógica: Parte da filosofia que trata das formas de pensamento em geral e das operações
+	      intelectuais que visam à determinação do que é verdadeiro ou não.
+
+	      Def. Lógica computacional: Organização e planejamento das Instruções, assertivas em um algoritmo,
+		a fim de viabilizar a implantação de um programa.
+		
+	    -Técnicas de Lógica de programação
+
+	      -Linear 
+
+		Modelo tradicional
+		Sem vínculo
+		  Estrutura hierárquica
+		  Programação de computadores
+		Execução Sequencial, Recursos limitados e Única dimensão
+
+	      -Estruturada
+
+		Organização, disposição e ordem dos elementos essenciais que compõem um corpo (concreto ou abstrato)
+
+		      Processamento de dados -> Programas 
+		Escrita
+		Entendimento 
+		Validação
+		Manutenção
+
+	      -Técnica Modular
+
+		Partes Independentes controladas por um conjunto de Regras
+
+		  Dados -> processamento -> saída
+
+		  Simplificação, Decompor o problema, Verificação do módulo
 	
+	-Características de um programa
+
+	    Legibilidade
+
+	      facilidade de leitura
+	      compreensão
+	      Ortogonalidade (Coerência nas instruções)
+	      Definição adequada das estruturas
+	    
+	    Redigibilidade - Facilidade de escrita
+
+	      Pode conflitar com a Legibilidade
+	      Ortogonalidade
+	      Simplicidade da escrita
+	      Suporte a abstração
+	      Reuso do código
+	      Expressividade
+	    
+	    Confiabilidade - Fazer o que foi programado para fazer
+
+	      Verificação de tipos
+	      Trata exceções
+	      Uso de ponteiros
+	      Compatibilidade entre compiladores
+	      
+	    Custo - Análise de impacto
+
+	      Treinamento
+	      Codificação
+	      Compilação
+	      Execução
+	      Infraestrutura 
+
+	    Outras Características
+
+	    Atualizações, Uso para IA, Disponibilidade de ferramentas, comunidade ativa e adoção pelo mercado  	
+	
+	  -Análise do código
+
+	   -Léxica 
+
+	      Particionar ->
+		Elementos denominado tokens
 		
+	      Classificar -> 
+		Elementos> identificadores, palavras reservadas, números, strings
 		
-		
-		
-		
-		
+	      Eliminar
+		Elementos> Caracteres de espaço em branco, comentários,..
+	    
+      	   -Sintática
+
+	 	 Estrutura e corretude do programa
+
+	   -Semântica 
+
+		  Lógica do programa 
+			
+	-Paradigmas de Programão
+
+	    Def. 
+	      Forma de resolução de problemas com diretrizes e limitações específicas de 
+	      de cada Paradigma utilizando LP.
+
+	      Exemplo: Orientação à objetos, procedural, funcional, estruturado, Comp. Distribuída e Lógico 
+
+	      -Estruturado
+
+		Sequencia, Decisão e iteração 
+
+	      -Orientação à objetos
+
+		Um objeto é descrito por características específicas, comportamentos e estados
+
+		Pilares
+
+		Herança, Encapsulamento, Polimorfismo e Abstração
+			
+			
+			
 		
 		
 		
