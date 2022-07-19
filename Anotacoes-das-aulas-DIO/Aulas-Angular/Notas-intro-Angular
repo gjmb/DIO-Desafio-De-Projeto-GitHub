@@ -1,0 +1,277 @@
+-Introdução ao Angular
+
+	-Iniciado um projeto
+	
+		ng new nome-projeto
+		
+	-Estrutura do Projeto
+	
+		-package.json
+		
+			* Contém todas as dependências do projeto (app)
+			* Permite configurar as dependências somente para o ambiente de Dev
+			* scripts: Editar como inicializar a App, adicionar mais recursos
+			
+		-angular.json
+		
+			* Contém as informações globais (Listagem) da App e define qual o arquivo que irá inicializar a App
+			* Assets: Contém os arquivos estáticos da App
+			* stlyes: Estilos globais que serão propagados para todos os componentes da App
+			* index: Página da App, Single Page App (SPA) - Toda a App está envelopada em uma única página
+			* main: Faz o bootstrap da App e inicializa a App (hook para chamar alguma prop de inicialização da app aka main) 
+			
+		-src 
+		
+			* Contém os códigos da App
+			
+			* main.ts  
+				
+				# Inicializa a App fazendo o bootstrap através do modulo raiz aka AppModule (app.module.ts)
+				
+			*styles.css
+			
+				# Estilo global para todos os componentes (Estilos criados dentro dos componentes são exclusivos)
+				
+			*assets
+			
+				# Contém os arquivos estáticos da App
+				
+			*app
+			
+				# app.module.ts
+				
+					+ le o Componente pai e envelopa todos os componentes criados
+				
+				# app.component.ts
+				
+					+ Componente pai, hook para index.html
+					
+	-Módulo
+	
+		* Limitador de contexto (~Orientação a objeto)
+							
+	-Componentes
+	
+		* O que é visual no módulo	
+		
+	-Interpolação
+		
+		* {{ component }} - Usado para exibir o valor de uma propriedade de um componente no template (html) do componente
+	
+	-One way data biding e two way data biding
+	
+		* 1  <input [ngModel] ='name' name="name"> - Só exibe e não atualiza o valor da propriedade
+		
+		* 2  <input [(ngModel)] ='name' name="name"> - Exibe a atualiza o valor da propriedade
+
+	-Instalando a framework bootstrap	
+	
+		* npm intall bootstrap
+		
+		* Em styles.css @import '~bootstrap/dist/css/bootstrap.min.css';
+		
+	- class NameClass implements OnInit
+	
+		* OnInit - Assim que o componente inicializa ela chama um método de hook para executar operações ao inicializar
+		
+			    ngOnInit(): void { }
+			    
+	- class NameClass implements OnChanges
+	
+		* OnChanges - Usado quando componentes executam ou recebem operções de forma assincrona
+		
+			ngOnChanges(): void { }
+			
+	- @Input() 
+	  rating:number=0;
+	  	
+		* Variavel se torna elegivel para receber info de um componente externo 
+ 
+	- Intalando o font-awesome 
+		
+		* npm install font-awesome
+		
+		* Em styles.css - @import '~font-awesome/css/font-awesome.min.css'
+				
+	- Injeção de dependência - Associada a Serviços
+	
+		@Injectable({
+    			providedIn:'root'
+		})
+		
+	- Transformando datas com pipes - Alterar a exibição de propriedades
+	
+		* <td>{{ course.releaseDate | date: 'dd/MM/yyyy'}}</td> -nativo do angular
+		
+		* Customizado
+		
+			@Pipe({
+	    			name:'replace'
+			})
+			
+			export class ReplacePipe implements PipeTransform{
+
+			    transform(value: string, char:string, valueToReplace:string) {
+				return value.replace(char, valueToReplace);
+			    }
+
+			}
+			
+	
+	- Protegendo rotas com Guards
+	
+		* em app.module.ts
+		
+			import { RouterModule } from '@angular/router';
+
+		
+			imports: [
+    				RouterModule.forRoot([
+    					{
+						path: '', redirectTo: 'courses', pathMatch: 'full'
+					},
+				        {
+						path: 'courses', component: CourseListComponent
+				        }
+  				  ])
+  			]			
+		 
+		* em course-list.component.ts - remover o selector app-course-list
+		
+			@Component({
+			    templateUrl: './course-list.component.html'
+			})
+			
+		* em app.component.html - remover <app-course-list></app-course-list> - add <router-outlet></router-outlet>
+
+		
+			<div class="container mt-4">
+    				    <router-outlet></router-outlet>
+			</div>	
+			
+			
+	-Envio de parametro de rota
+	
+		* em course-info.component.ts
+		
+			export class CourseInfoComponent implements OnInit{
+
+			    courseId?:number;
+
+			    constructor (private activatedRoute: ActivatedRoute){
+
+			    }
+
+			    ngOnInit (): void {
+				this.courseId = Number(this.activatedRoute.snapshot.paramMap.get('id'));
+			    } 
+
+			}
+			
+		* em course-list.component.html
+		
+		<td>
+		        <a [routerLink]="['/course/info', course.id]" class="btn btn-primary">Edit</a>
+		</td>
+		
+	-Trabalhando com formularios e templates
+	
+		* https://angular.io/guide/template-reference-variables
+		
+	-Requisições HTTP
+	
+		* em app.module.ts
+		
+			import { HttpClientModule } from '@angular/common/http';
+			
+			imports: [
+				    HttpClientModule,
+				  ]
+				  
+		* em course.service.ts
+		
+			import { HttpClient } from "@angular/common/http";
+			
+			private coursesUrl:string='http://localhost:3100/api/courses';
+
+			constructor( private httpClient:HttpClient){
+
+		   	}
+
+		   	retrieveAll():Observable<Course[]>{
+				return this.httpClient.get<Course[]>(this.coursesUrl);
+			
+		    	}
+		    	
+		    	
+		* em course-list.component.ts
+		
+	-Segregando a aplicação em modulos
+	
+		* Cria-se um novo modulo course.module.ts para encapsular os componentes pertencentes a course, segregando 		responsabilidades
+		
+			@NgModule({
+			    declarations:[
+				CourseListComponent,
+				CourseInfoComponent,
+				StarComponent,
+				ReplacePipe,
+			    ],
+			    imports:[
+				CommonModule,
+				FormsModule,
+				RouterModule.forChild([
+				    {
+					path: 'courses', component: CourseListComponent
+				      },
+				      {
+					path:'course/info/:id', component: CourseInfoComponent
+				      }
+				    ])
+			    ]
+			})
+
+			export class CourseModule{
+
+			}
+	
+		* Em app.module.ts
+						
+			@NgModule({
+			  declarations: [
+			    AppComponent,
+			    NavBarComponent,
+			    Error404Component,
+
+			  ],
+			  imports: [
+			    BrowserModule,
+			    FormsModule,
+			    HttpClientModule,
+			    CourseModule,
+			    RouterModule.forRoot([
+			      {
+				path: '', redirectTo: 'courses', pathMatch: 'full'
+			      },
+			      {
+				path:'**', component: Error404Component
+			      }
+			    ])
+			  ],
+			  providers: [],
+			  bootstrap: [AppComponent]
+			})
+			export class AppModule { }
+
+	-Pasta shared
+		
+		* Usada para agrupar componentes genericos que podem ser usador em varias partes da app
+		
+	-Pasta core
+	
+		* Para componentes mais pesados com regras de negocios especificas e são acoplados a outros componentes
+		
+	-Tratando erros com Angular
+	
+	 
+	
