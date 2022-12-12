@@ -1,0 +1,71 @@
+- Single Page Aplication (SPA) com Angular
+
+	- Criando um projeto
+	
+		ng new DIO-Paginas-SPA-Angular --prefix=spa
+		
+	- Executando o projeto
+	
+		ng serve -o
+		
+	- Diretorios
+	
+		-node_modules
+		
+			Contém todos os pacotes e dependências que o Angular NPM baixou e instalou
+			
+		-app
+		
+			Ficam os componentes e arquivos de modulo
+			
+		-src
+		
+			Códigos da aplicação
+			
+		-Assets
+		
+			Arquivos estáticos da aplicação
+			
+		- environments
+		
+			Referente as variveis especificas do ambiente de produção
+			
+	- Arquivos do projeto
+	
+		-package.json
+		
+			 Contém todas as dependências do projeto (app)
+			 Permite configurar as dependências somente para o ambiente de Dev
+			 scripts: Editar como inicializar a App, adicionar mais recursos
+			
+	- Adicionanado o Angular Materials
+	
+		ng add @angular/material
+		
+	- Gerar um novo componente via linha de comando
+	
+		ng g c home
+		
+	- Data Binding
+
+		- Interpolação: {{ valor }}
+		
+			Associa info do comonente com para o template (HTML)
+			
+		- Property Biding: [propriedade]="valor"
+			
+			Associa info do comonente com para o template (HTML)
+			
+		- Two-way Data Biding: [(propriedade)]="valor"
+			
+			Associa info entre ambos, ou seja, mantém ambos atualizados (comp e template (HTML))
+			
+		- Event Biding: (evento)="handler"
+			
+			Associa info do template (HTML) para o comonente  
+				
+		-	
+		
+	
+		
+	
